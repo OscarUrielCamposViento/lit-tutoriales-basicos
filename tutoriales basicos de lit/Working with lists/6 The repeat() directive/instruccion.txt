@@ -1,0 +1,43 @@
+Al usar la map()directiva o simplemente proporcionar un iterable dentro de la plantilla, Lit crea una lista de nodos DOM y los actualiza en el orden de iteración, reutilizando de manera eficiente cualquier nodo renderizado previamente. Esta técnica solo debe usarse cuando Lit controla todo el estado renderizado (como suele ser el caso).
+
+Sin embargo, cuando se confía en cambio en los nodos DOM para mantener un estado que no está controlado por Lit, puede ocurrir un comportamiento inesperado, como lo demostrará el siguiente ejemplo. En este caso, utilice la repeat()directiva en su lugar.
+
+Ejemplo
+Eche un vistazo a este ejemplo donde cada elemento de la tarea se representa <li>con una casilla de verificación usando la map()directiva. Hay botones para ordenar los elementos de la lista en orden alfabético ascendente o descendente. El texto de la etiqueta lo proporciona una expresión de plantilla, pero no hay un estado de componente explícito para mantener si el elemento está marcado o no.
+
+Marque uno de los artículos y cambie el orden de clasificación. Observe que el texto de la etiqueta del elemento cambia, pero no la posición de la casilla marcada. Esto se debe a que el estado de la casilla de verificación, que no está controlado por Lit, permanece en los nodos DOM. Durante la actualización, Lit solo actualiza el valor del nodo de texto que contiene la etiqueta sin reordenar los nodos DOM.
+
+Use la repeat()directiva para mantener el elemento de la lista y la casilla de verificación vinculados al elemento específico de la matriz. El uso de esta directiva con una función clave le permite a Lit mantener la asociación de clave a DOM entre las actualizaciones al mover los nodos DOM cuando sea necesario.
+
+Comience importando la repeat()directiva.
+
+
+JS
+TS
+// my-element.js
+import {repeat} from 'lit/directives/repeat.js';
+Úselo repeat()en lugar de la map()directiva, proporcionando iterable, una función clave que devuelve un identificador único para un elemento en particular y la plantilla para representar cada elemento.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    return html`
+      ⋮
+      <ul>
+        ${repeat(
+          this.tasks,
+          (task) => task.id,
+          (task) => html`
+            <li>
+              <label><input type="checkbox" />${task.label} (${task.id})</label>
+            </li>
+          `
+        )}
+      </ul>
+    `;
+  }
+Confirme que esto funciona correctamente marcando un artículo y cambiando el orden de clasificación. La marca de verificación ahora debería moverse para permanecer junto a su etiqueta original.
+
+La función clave proporcionada debe devolver una clave única para un elemento. Si omite la función clave, o proporciona una función clave que simplemente devuelve el índice , repeat()se comporta exactamente como map(). Para obtener más información, consulte la documentación repetida . Consulte también Cuándo usar el mapa o repetir para obtener orientación sobre cómo decidir cuándo usar uno u otro.

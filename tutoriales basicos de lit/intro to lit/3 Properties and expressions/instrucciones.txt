@@ -1,0 +1,31 @@
+Los componentes encendidos pueden tener propiedades reactivas . Cambiar una propiedad reactiva desencadena la actualización del componente.
+
+Aquí le hemos dado una definición básica de componente. En este paso, declarará una propiedad reactiva y la usará en una expresión en la plantilla del componente.
+
+Declarar una propiedad reactiva.
+
+Agregue el siguiente campo a la MyElementclase:
+
+
+JS
+TS
+static properties = {
+  message: {},
+};
+
+constructor() {
+  super();
+  this.message = 'Hello again.';
+}
+El fragmento de código anterior agrega una propiedad de cadena llamada messagea su clase de elemento. El @propertydecorador lo identifica como una propiedad reactiva.
+
+Agregue una expresión a su plantilla.
+
+Busque la etiqueta de párrafo en el render()método y reemplace su contenido con esta expresión:
+
+${this.message}
+Puede agregar valores dinámicos a sus plantillas Lit con expresiones de JavaScript.
+
+Ahora debería ver el valor de la propiedad en su salida.
+
+Para ver cómo funciona una propiedad reactiva en la práctica, necesitará una forma de actualizar el valor. En el siguiente paso, agregará un detector de eventos para hacer precisamente eso.

@@ -1,0 +1,21 @@
+Este tutorial interactivo lo ayudará a comenzar con Lit y ​​ver lo simple que es crear componentes web ligeros y rápidos.
+
+Cada paso de este tutorial presenta una o dos características de Lit. Utilice el editor interactivo para agregar funciones al ejemplo de código inicial y obtener una vista previa del resultado.
+
+Si se atasca en un paso, haga clic en Resolver para ver el código terminado o haga clic en Restablecer para volver al código inicial. El editor muestra un componente Lit básico como los que creará en los pasos siguientes. Por ahora, pruebe los botones Resolver y Restablecer .
+
+Puede hacer este tutorial en TypeScript o JavaScript. Cambie el idioma haciendo clic en cualquiera de los conmutadores JS/TS , que aparecen en la esquina del editor y en ejemplos de código intercambiables, como este:
+
+
+JS
+TS
+// JavaScript for JavaScript lovers!
+const items;
+Los conmutadores están vinculados, por lo que los ejemplos de código de cortar y pegar siempre deben coincidir con el idioma del editor. Puede cambiar cuando lo desee, pero tenga en cuenta que si cambia de idioma, perderá todos los cambios que haya realizado en el editor.
+
+Los componentes iluminados son componentes web , por lo que actúan como elementos HTML regulares. Puede agregarlos a una página con etiquetas HTML simples, como esta:
+
+<my-element></my-element>
+Eche un vistazo al index.htmleditor de código para ver cómo se agrega el componente Lit de muestra a la página.
+
+También puede revisar nuestra documentación para obtener más información a medida que avanza.

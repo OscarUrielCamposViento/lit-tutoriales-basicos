@@ -1,0 +1,30 @@
+Lit admite la representación de elementos iterables directamente en plantillas, pero a menudo es necesario representar una plantilla que utilice los elementos, en lugar de los elementos directamente.
+
+Lit proporciona una map()directiva integrada que le permite transformar los elementos en iterables. La map()directiva funciona con todo tipo de iterables, incluidos arreglos, conjuntos, mapas e incluso generadores. Devuelve un iterable que contiene el resultado de llamar a la función de devolución de llamada proporcionada en cada elemento.
+
+En este ejemplo, recibe un elemento personalizado con una propiedad de estado denominada items, que contiene un conjunto de cadenas.
+
+Representa cada elemento del conjunto como un elemento de lista ( <li>) que contiene esa cadena. Comience importando la map()directiva.
+
+
+JS
+TS
+// my-element.js
+import {map} from 'lit/directives/map.js';
+Utilice la directiva en la plantilla del componente, proporcionando una función de devolución de llamada que devuelve una plantilla que envuelve cada elemento con una <li>etiqueta y colóquelo dentro de la <ul>etiqueta.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    return html`
+      ⋮
+      <ul>
+        ${map(this.items, (item) => html`<li>${item}</li>`)}
+      </ul>
+    `;
+  }
+El índice del elemento también está disponible para la función de devolución de llamada. Consulte la documentación del mapa para obtener más detalles.
+
+Crédito adicional: intente agregar un número de artículo a cada artículo de la lista usando el índice.

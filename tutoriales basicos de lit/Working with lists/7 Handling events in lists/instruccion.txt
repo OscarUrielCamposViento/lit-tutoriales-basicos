@@ -1,0 +1,42 @@
+Hay varias formas de agregar detectores de eventos para enumerar elementos en su plantilla. También debe asegurarse de que el controlador de eventos pueda identificar con qué elemento está relacionado el evento. Este paso muestra una manera de lograr esto.
+
+El ejemplo actualmente tiene una matriz de cadenas en la thingspropiedad de estado. Cada cadena se representa como un elemento de lista con un botón "Eliminar", pero el botón aún no hace nada.
+
+Primero, cree un método que se llamará cuando se haga clic en el botón. El método debe tomar el índice de un elemento como parámetro y eliminar ese elemento de la thingsmatriz.
+
+
+JS
+TS
+// my-element.js
+class MyElement extends LitElement {
+  ⋮
+  _deleteThing(index) {
+    this.things = this.things.filter((_, i) => i !== index);
+  }
+}
+Utilice patrones de datos inmutables para activar una actualización. El filter()método de matriz devuelve una nueva matriz que se asigna a this.things. Dado que la referencia almacenada en los this.thingscambios, Lit sabrá actualizar el componente cuando _deleteThing()se llame. Si la matriz se muta con algo como el splice()método de matriz, se debe solicitar una actualización manualmente. Para obtener más información, consulte Objetos mutantes y propiedades de matriz .
+Ahora registre el controlador en el botón para cada elemento a medida que se mapea la matriz.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    return html`
+      ⋮
+      <ul>
+        ${map(
+          this.things,
+          (thing, index) => html`
+            <li>
+              ${thing}
+              <button @click=${() => this._deleteThing(index)}>Delete</button>
+            </li>
+          `
+        )}
+      </ul>
+    `;
+  }
+Ahora, hacer clic en el botón Eliminar debería eliminar el elemento. Tenga en cuenta que aquí se usa una función de flecha en línea para crear un cierre, por lo que cada elemento de la lista obtiene una función que llama _deleteThingcon su propio índice.
+
+Si bien los cierres están bien en la mayoría de los casos, existen otras formas de lograr este comportamiento. Por ejemplo, puede agregar una propiedad o atributo al elemento que envía el evento. El controlador de eventos puede acceder a esos datos usando event.target. Al escuchar un evento que se propaga, puede usar la delegación de eventos para evitar adjuntar detectores de eventos en cada elemento. Para obtener más información, consulte Escuchar eventos activados desde plantillas repetidas .

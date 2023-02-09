@@ -1,0 +1,26 @@
+En Lit, la mayoría de las cosas comienzan con la definición de un componente . Aquí le proporcionamos un proyecto inicial que tiene las importaciones requeridas y nada más.
+
+Defina un componente.
+
+
+JS
+TS
+class MyElement extends LitElement {
+}
+customElements.define('my-element', MyElement);
+La MyElementclase proporciona la implementación de su nuevo componente. La customElements.definellamada lo registra en el navegador como un nuevo tipo de elemento denominado my-element.
+
+El texto "TODO" debería desaparecer del panel de resultados , mostrando que el componente está definido. Pero a su componente todavía le falta algo: no muestra nada.
+
+Agrega un render()método a tu clase.
+
+render() {
+  return html`
+    <p>Hello world! From my-element.</p>
+  `;
+}
+El render()método define el DOM interno de su componente. La htmlfunción de etiqueta procesa un literal de plantilla y devuelve un TemplateResultobjeto que describe el HTML para que Lit lo represente. Cada componente de Lit debe incluir un render()método.
+
+Debería ver el mensaje de saludo en el panel de resultados .
+
+Decoradores. La versión TypeScript de este código usa el @customElementdecorador para registrar su clase con el navegador como un nuevo elemento. La versión de JavaScript customElements.define()suele hacer lo mismo. Esta es una cuestión de estilo. Puede usar decoradores, o no usar decoradores, en cualquiera de los dos idiomas. Para obtener más información, consulte Decoradores .

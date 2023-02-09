@@ -1,0 +1,45 @@
+Los métodos utilizados en los pasos anteriores son excelentes cuando se trabaja con un solo iterable como fuente de datos, pero a veces la situación puede requerir un enfoque más imperativo.
+
+En este ejemplo, el componente tiene las siguientes propiedades de estado:
+
+friends- una matriz de cadenas.
+pets- una serie de objetos.
+includePets- un booleano controlado por un botón.
+Representa un elemento de la lista para cada miembro, pero también incluye mascotas si includePetses true. El elemento de la lista para la mascota debe incluir tanto el nombre como la especie.
+
+Rellene la listItemsmatriz condicionalmente en función del estado booleano, como se muestra a continuación.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    const listItems = [];
+    this.friends.forEach((friend) => {
+      listItems.push(html`<li>${friend}</li>`);
+    });
+    if (this.includePets) {
+      this.pets.forEach((pet) => {
+        listItems.push(html`<li>${pet.name} (${pet.species})</li>`);
+      });
+    }
+    ⋮
+  }
+Luego agregue la listItemsmatriz a la plantilla de su elemento.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    ⋮
+    return html`
+      ⋮
+      <ul>
+        ${listItems}
+      </ul>
+    `;
+  }
+Haga clic en el botón para ver si la representación condicional funciona correctamente.
+
+Crédito adicional: intente refactorizar el código para abstraer la lógica del render()método en su propio método privado que devuelve la matriz de plantillas. Luego invoque el nuevo método dentro de la expresión de la plantilla (reemplazando listItems).

@@ -1,0 +1,13 @@
+¡Este tutorial explora diferentes formas de renderizar listas de elementos en Lit!
+
+Lit facilita la representación de cualquier lista de elementos. Tiene soporte incorporado para iterables: pase una matriz (u otra iterable) a una expresión secundaria y Lit representará cada elemento en la matriz. Esto, combinado con la capacidad de Lit para representar plantillas anidadas y patrones de JavaScript para transformar listas de datos en listas de plantillas, permite un manejo de listas muy flexible.
+
+lo que aprenderás
+Listas de representación con la map()directiva.
+Transformación de matrices en plantillas con métodos de matriz.
+Generación de listas con la range()directiva.
+Imperativamente construyendo matrices de elementos.
+Listas diferentes de elementos con estado con la repeat()directiva.
+Uso de detectores de eventos en una lista.
+Conocimiento previo
+Este tutorial asume que ha completado el tutorial Introducción a Lit , o que ya está familiarizado con algunos de los conceptos básicos de Lit: definición de un componente , representación , propiedades reactivas y adición de un detector de eventos .

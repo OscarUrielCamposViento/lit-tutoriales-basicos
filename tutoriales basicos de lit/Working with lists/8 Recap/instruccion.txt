@@ -1,0 +1,13 @@
+¡ Felicitaciones por completar el tutorial Trabajar con listas !
+
+comida para llevar
+¡Lit tiene soporte incorporado para renderizar iterables! Simplemente coloque arreglos, conjuntos, mapas o generadores directamente en la expresión de la plantilla.
+Use la map()directiva para una forma declarativa de tomar un elemento iterable y transformar cada elemento en una plantilla renderizable. Úselo cuando todo el estado necesario esté controlado por Lit.
+Para situaciones complejas que involucren más lógica, puede construir una matriz de elementos imperativos usando los Arraymétodos. Considere usar un método privado separado para abstraer la lógica relacionada del render()método.
+Usa la repeat()directiva cuando los nodos DOM representados tengan un estado que no esté controlado por Lit, o cuando actualizar los nodos DOM sea más costoso que moverlos. Proporcione una función clave que produzca una clave única para cada elemento del iterable.
+Considere usar la range()directiva junto con map()para generar una lista mediante programación. Estos también se pueden anidar para producir una cuadrícula multidimensional.
+Por último, al agregar detectores de eventos a los elementos representados desde una lista, asegúrese de que el controlador tenga acceso a los datos que necesita que sean específicos de cada elemento. El uso de una función de flecha en línea suele ser una buena manera de lograr esto al crear un cierre para cada elemento.
+Más aprendizaje
+Consulte otras directivas integradas además map()de repeat(), y range()que están disponibles, ¡o aprenda a crear su propia directiva personalizada !
+
+Para obtener más información sobre las propiedades reactivas y el ciclo de actualización reactiva que impulsa los componentes de Lit, pruebe el tutorial de Reactividad

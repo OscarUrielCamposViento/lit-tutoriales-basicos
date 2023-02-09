@@ -1,0 +1,39 @@
+Ahora que tiene algunos de los conceptos básicos, presentaremos un elemento más complicado. En el resto de este tutorial, creará un componente de lista de tareas pendientes. Aquí proporcionamos algunos de los repetitivos para su lista de tareas pendientes.
+
+Dado que los elementos de la lista son privados para el componente, la _listItemspropiedad se define como estado reactivo interno . Funciona como una propiedad reactiva, pero no se expone como un atributo y no se debe acceder desde fuera del componente. Para obtener más información, consulte Propiedades públicas y estado interno .
+
+Puede usar JavaScript estándar en expresiones Lit para crear plantillas condicionales o repetitivas. En este paso, usará map()para convertir una matriz de datos en una plantilla repetitiva.
+
+Elementos de la lista de procesamiento.
+
+Agregue la siguiente expresión entre las etiquetas de inicio y fin para la lista desordenada ( <ul>).
+
+  ${this._listItems.map((item) =>
+    html`<li>${item.text}</li>`
+  )}
+Tenga en cuenta el anidado htmldentro de la map()devolución de llamada. Para obtener más información, consulte Listas y plantillas repetitivas .
+
+Agregue el controlador de clics.
+
+Hemos proporcionado una entrada y un botón Agregar , pero aún no están conectados. Agregue la inputpropiedad y un método de controlador de eventos para el botón:
+
+
+JS
+TS
+get input() {
+  return this.renderRoot?.querySelector('#newitem') ?? null;
+}
+
+addToDo() {
+  this._listItems = [...this._listItems,
+      {text: this.input.value, completed: false}];
+  this.input.value = '';
+}
+El @querydecorador (usado en la versión TypeScript del código) es una forma práctica de obtener una referencia a un nodo en el DOM interno de su componente. Es equivalente a este código en la versión de JavaScript:
+
+get input() {
+  return this.renderRoot?.querySelector('#newitem') ?? null;
+}
+Intente ingresar un elemento nuevo y haga clic en Agregar .
+
+Mutación de objetos y matrices. Tenga en cuenta que en lugar de mutar la _listItemsmatriz, addToDo()crea una nueva matriz que incluye el nuevo elemento. El uso de este patrón de datos inmutable garantiza que los componentes vean los nuevos datos. Para obtener más información, consulte Mutación de objetos y matrices .

@@ -1,0 +1,20 @@
+Puede agregar estilos encapsulados a un componente Lit. Aquí, el código de inicio se transfiere del último paso, pero hemos agregado la capacidad de marcar un elemento como completado al hacer clic en él.
+
+En este paso, agregará algunos estilos para elementos terminados.
+
+stylesAgregue un campo de clase estático .
+
+static styles = css`
+  .completed {
+    text-decoration-line: line-through;
+    color: #777;
+  }
+`;
+Los estilos definidos en el campo de clase estática stylesse limitan al componente mediante shadow DOM. Para obtener más información, consulte Estilos y Trabajo con shadow DOM .
+
+Agregue clases a su plantilla de elementos
+
+Reemplace la línea existente, class="TODO"con la siguiente expresión:
+
+class=${item.completed ? 'completed' : ''}
+Una expresión ternaria es una forma práctica de agregar lógica condicional a una plantilla. Si desea configurar más de una clase a la vez, puede usar la classMapdirectiva de Lit, en su lugar.

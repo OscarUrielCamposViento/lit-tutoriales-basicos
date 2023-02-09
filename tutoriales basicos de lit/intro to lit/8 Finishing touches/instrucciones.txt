@@ -1,0 +1,45 @@
+A medida que las plantillas se vuelven grandes y complicadas, puede ser útil dividirlas en partes más pequeñas. Aquí hemos agregado una casilla de verificación Ocultar completado a la lista de tareas pendientes. También extrajimos la plantilla principal de la lista de tareas pendientes en una constante local separada, todos. Puede pensar en esto como una plantilla parcial.
+
+Notará que el todosparcial es casi idéntico al <ul>elemento del paso anterior, excepto que usa la nueva itemsconstante local en lugar de this._listItems.
+
+Su misión: refactorizar la plantilla para ocultar los elementos completados cuando Ocultar completado esté marcado y mostrar un mensaje cuando no se muestren elementos incompletos.
+
+Calcular los elementos a mostrar.
+
+Encuentre la definición de la itemsconstante al comienzo del render()método y reemplácela con el siguiente código:
+
+const items = this.hideCompleted
+  ? this._listItems.filter((item) => !item.completed)
+  : this._listItems;
+Defina algunas plantillas parciales.
+
+Agregue el siguiente código justo antes de la returndeclaración.
+
+const caughtUpMessage = html`
+  <p>
+  You're all caught up!
+  </p>
+`;
+const todosOrMessage = items.length > 0
+  ? todos
+  : caughtUpMessage;
+Ponlo todo junto.
+
+En la plantilla principal, busque la ${todos}expresión y reemplácela con su nueva plantilla parcial:
+
+${todosOrMessage}
+El resultado final debería verse así:
+
+return html`
+  <h2>To Do</h2>
+  ${todosOrMessage}
+  <input id="newitem" aria-label="New item">
+  ...
+Intente hacer clic en Ocultar completado y asegúrese de que su código funcionó. Continúe y tache el tutorial Complete Lit. (Si algo no funciona, verifique su trabajo o haga clic en Resolver para ver el código terminado).
+
+Próximos pasos
+Para seguir explorando Lit, prueba uno de estos tutoriales:
+
+Trabajar con listas explora las plantillas repetitivas con más detalle.
+La reactividad profundiza en las propiedades reactivas y cómo se actualizan los componentes de Lit.
+Si desea ver más muestras interactivas y seguir experimentando con Lit en línea, puede dirigirse a Playground . O si está listo para probar algo real, puede consultar nuestros kits de inicio de componentes o agregar Lit a un proyecto existente .

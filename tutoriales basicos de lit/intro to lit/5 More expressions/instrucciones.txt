@@ -1,0 +1,28 @@
+En las páginas anteriores, usó expresiones para agregar contenido de texto (nodos secundarios) y agregar un detector de eventos. También puede utilizar expresiones para establecer atributos o propiedades.
+
+Aquí proporcionamos un componente con una casilla de verificación y una entrada de texto. En este paso, utilizará una expresión para habilitar o deshabilitar la entrada de texto.
+
+Encuentre la entrada de texto y agregue esta expresión.
+
+?disabled=${!this.checked}
+La sintaxis le dice a Lit que desea establecer o eliminar un atributo booleano en función del valor de la expresión.?attributeName
+
+Hay cinco posiciones comunes para las expresiones en las plantillas Lit:
+
+<!-- Child nodes -->
+<h1>${this.pageTitle}</h1>
+
+<!-- Attribute -->
+<div class=${this.myTheme}></div>
+
+<!-- Boolean attribute -->
+<p ?hidden=${this.isHidden}>I may be in hiding.</p>
+
+<!-- Property -->
+<input .value=${this.value}>
+
+<!-- Event listener -->
+<button @click=${() => {console.log("You clicked a button.")}}>...</button>
+Las expresiones pueden usar cualquier JavaScript estándar.
+
+Para obtener más información, consulte Expresiones .

@@ -1,0 +1,21 @@
+Las expresiones literales de plantillas iluminadas pueden contener cualquier expresión de JavaScript que devuelva un valor representable como se describe en la documentación de expresiones . Cuando se trabaja con matrices, sus métodos de prototipo también se pueden usar para generar matrices de valores renderizables.
+
+Este ejemplo tiene un componente con una namespropiedad de estado que contiene una matriz de cadenas.
+
+Utilice el filter()método de matriz para mantener solo los nombres que incluyen la letra "e" seguida de una map()llamada de método de matriz para generar una matriz de resultados de plantilla para colocar en la plantilla del componente.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    return html`
+      ⋮
+      <ul>
+      ${this.names
+        .filter((name) => name.match(/e/i))
+        .map((name) => html`<li>${name}</li>`)}
+      </ul>
+    `;
+  }
+El uso de métodos de matriz es útil cuando se encadena de esta manera, pero requiere que la fuente original sea una matriz. Considere usar la map()directiva como se muestra en el paso anterior para cualquier iterable que no sea una matriz.

@@ -1,0 +1,28 @@
+Para agregar interactividad a sus componentes, probablemente desee agregar algunos controladores de eventos. Lit facilita agregar un detector de eventos declarativo en la plantilla, usando una expresión como esta:
+
+<button @click=${this.handleClick}>Click me!</button>
+Aquí proporcionamos un componente de etiqueta de nombre con un mensaje y un elemento de entrada. En este paso, utilizará un detector de eventos declarativo para que el componente pueda controlar los eventos de entrada.
+
+Agregue un detector de eventos declarativo.
+
+Encuentre el elemento de entrada y agregue un detector de eventos declarativo:
+
+<input @input=${this.changeName} placeholder="Enter your name">
+Esta @inputexpresión se agrega this.changeNamecomo un detector de eventos para el inputevento. (Puede usar esta sintaxis para cualquier detector de eventos: simplemente reemplace la entrada con cualquier nombre de evento y this.changeNamecon cualquier expresión de JavaScript que se evalúe como un controlador de eventos).
+
+Agregue el método del controlador de eventos.
+
+A continuación, agregue el controlador de eventos que se llama cuando cambia el valor de entrada.
+
+
+JS
+TS
+changeName(event) {
+  const input = event.target;
+  this.name = input.value;
+}
+Dado que namees una propiedad reactiva, establecerla en el controlador de eventos activa la actualización del componente.
+
+Pruébelo introduciendo un nombre.
+
+Para obtener más información sobre los controladores de eventos declarativos, consulte Eventos .

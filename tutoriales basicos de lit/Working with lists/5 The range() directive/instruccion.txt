@@ -1,0 +1,35 @@
+La creación de una lista también es útil para renderizar patrones repetidos como, por ejemplo, un tablero de juego.
+
+La range()directiva proporciona una manera simple de crear una iteración de enteros incrementales que se pueden usar con la map()directiva para representar mediante programación una lista de plantillas de una manera conveniente. Anidar esto le permite crear patrones multidimensionales.
+
+El componente de ejemplo ya tiene algunos estilos definidos para crear un tablero de 8 por 8 para llenar con <div>s cuyo color de fondo se determinará agregando clases "negro" o "blanco".
+
+Comience importando ambas directivas.
+
+
+JS
+TS
+// my-element.js
+import {range} from 'lit/directives/range.js';
+import {map} from 'lit/directives/map.js';
+Utilice estas directivas para crear cuadrados en blanco y negro como un tablero de ajedrez.
+
+
+JS
+TS
+// my-element.js
+  render() {
+    return html`
+      ⋮
+      <div id="board">
+        ${map(range(8), (row) => map(range(8), (col) => html`
+          <div class="${getColor(row, col)}">${getLabel(row, col)}</div>
+        `))}
+      </div>
+    `;
+  }
+Esto funciona como un bucle anidado forpara generar una cuadrícula bidimensional.
+
+La range()directiva se usa para generar una iteración de enteros del 0 al 7 que se pasa a la map()directiva. Para cada uno de los rownúmeros enteros, se genera un rango de columnnúmeros enteros del 0 al 7 y se asigna para dar como resultado un archivo <div>. Los nombres de las clases y el contenido del texto se derivan de la coordenada row- .column
+
+La range()salida de la directiva se puede personalizar proporcionando argumentos adicionales que controlan start, endy el incremento step. Consulte la documentación de la gama .
